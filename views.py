@@ -16,6 +16,8 @@ log = logging.getLogger(__name__)
 
 
 class AutoLoginView(View):
+    """Capture the current user information and make an external login
+    request to the appropriate service using a redirect"""
 
     def generate_signature(self, username, date):
         try:

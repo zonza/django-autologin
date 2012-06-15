@@ -42,8 +42,8 @@ The third party project should be configured with the following settings::
         'thirdparty': 'http://thirdparty/',
     }
 
-`urls.py` should also be configured to point at::
+``urls.py`` should also be configured to point at::
 
     (r'^autologin/', include('autologin.urls')),
 
-Any request to `autologin/<service>/` will attempt to login to the url configured for `<service>`.
+Any request to ``autologin/<service>/`` will attempt to login to the url configured for ``<service>``.
