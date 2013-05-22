@@ -7,10 +7,7 @@ log = logging.getLogger(__name__)
 
 
 class AutoLoginBackend(ModelBackend):
-    """This backend extends the djangosaml2 one to add vidispine
-    user. It is added automatically by the
-    saml_assertion_consumer_service view.
-    """
+    """A backend that does not require a password to authenticate"""
 
     def clean_username(self, username):
         return username.lower()
