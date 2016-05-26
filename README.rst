@@ -9,12 +9,13 @@ autologin
 Installation and Usage
 ======================
 
-**autologin** is a django app that enables automatic login from one Django project to another.
-Login requests are made using a basic GET redirect request and is verified by the remote
-application using public key signatures.
+**autologin** is a Django app that enables automatic login from one Django
+project to another in a secure manner. Login requests are made using a basic
+GET redirect request and is verified by the remote application using RSA public
+key signatures.
 
-To configure the application you will need to add the following settings to the client project's
-settings.py::
+To configure the application you will need to add the following settings to the
+client project's settings.py::
 
     AUTOLOGIN_PRIVATE_KEY = """
     -----BEGIN RSA PRIVATE KEY-----
@@ -46,4 +47,5 @@ The third party project should be configured with the following settings::
 
     (r'^autologin/', include('autologin.urls')),
 
-Any request to ``autologin/<service>/`` will attempt to login to the url configured for ``<service>``.
+Any request to ``autologin/<service>/`` will attempt to login to the url
+configured for ``<service>``.
