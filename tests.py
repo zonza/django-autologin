@@ -34,6 +34,7 @@ rfbKE7UP5n1yBhdeX+PPKOtNjKOsXCkg8utI3HtH6w==
 class TestSiteMetadataMapping(TestCase):
 
     def setUp(self):
+        # Construct a mock request for each test
         cache.clear()
         self.request = Mock()
         self.user, __ = User.objects.get_or_create(username='admin')
@@ -43,6 +44,8 @@ class TestSiteMetadataMapping(TestCase):
         self.request.session = {}
 
     def testInvalidSig(self):
+        "Test that an invalid signature is denied, preventing access"
+
         now = datetime(2011, 1, 1, 1, 12, 00, 100000)
         request = self.request.copy()
         request.GET = {
@@ -56,6 +59,8 @@ class TestSiteMetadataMapping(TestCase):
         self.assertEqual(login_request.verify(), False)
 
     def testValidSig(self):
+        "Test that a valid signature is validated successfully"
+
         # Construct login request server side
         domain = 'http://testserver/'
         settings.AUTOLOGIN_SERVICES = {'test': domain}
